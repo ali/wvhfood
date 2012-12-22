@@ -1,0 +1,14 @@
+{
+  "name": "wvhfood",
+  "description": "it's like kicksend but for whales",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "3.x",
+    "mongoose": "3.x"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  }
+}
