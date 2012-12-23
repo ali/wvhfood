@@ -1,5 +1,6 @@
 {
-  "name": "application-name",
+  "name": "wvhfood",
+  "description": "Is there food in West Village H?",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -7,7 +8,12 @@
   },
   "dependencies": {
     "express": "3.0.4",
+    "mongoose": "3.x",
     "jade": "*",
     "stylus": "*"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm":  "1.1.x"
   }
 }
