@@ -5,9 +5,13 @@ block content
     h1= title
     p Is there food in WVH?
 
-  ul#texts
-    - each text in texts
-      li= text.body
+  #texts
+    - if (texts.length)
+      ul
+        - each text in texts
+          li= text.body
+    - else
+      p Nope
 
   ul#info
     li

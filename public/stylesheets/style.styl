@@ -3,7 +3,8 @@
 body
   padding: 50px
   font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif
-  image: '../images/subtle_dots.png'
+  background-color: rgba(245,245,245,1)
+  // image: '../images/grey.png'
 
 a
   color: #00B7FF
@@ -19,19 +20,23 @@ header h1
   margin: 0 auto
   width: 480px
 
-#texts, #info
+ul
   padding: 0
   list-style-type: none
 
 #texts
-  li
+  p
+    font-size: 2.4rem
+    text-align: center
+  p, li
     border-radius: 5px
     box-shadow: 0 1px -1px 1px rgba(0, 0, 0, 0.1)
-    padding: 2em
+    padding: 1em;
     background: #fff
 
 #info
   clearfix()
   li
     float: left
-    width: 33.33%
+    width: 30.33%
+    margin: 0 1.5%;
