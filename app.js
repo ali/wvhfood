@@ -1,50 +1,35 @@
-var express = require('express');
+/**
+ * Module dependencies.
+ */
+
+var express = require('express')
+  , mongoose = require('mongoose')
+  , routes = require('./routes')
+  , http = require('http')
+  , path = require('path');
+
 var app = express();
-var mongoose = require('mongoose');
 
-app.use(express.bodyParser());
-
-// DB Crap
-var db = mongoose.connection;
-var mongoUri = process.env.MONGOHQ_URL || 'mongodb://localhost/wvhfood';
-mongoose.connect(mongoUri);
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function callback() {
-  console.log('Connected! :D');
+app.configure(function(){
+  app.set('port', process.env.PORT || 3000);
+  app.set('views', __dirname + '/views');
+  app.set('view engine', 'jade');
+  app.use(express.favicon());
+  app.use(express.logger('dev'));
+  app.use(express.bodyParser());
+  app.use(express.methodOverride());
+  app.use(app.router);
+  app.use(require('stylus').middleware(__dirname + '/public'));
+  app.use(express.static(path.join(__dirname, 'public')));
 });
 
-var textSchema = mongoose.Schema({
-  from: String,
-  body: String,
-  dateSent: Date
-});
-var Text = mongoose.model('text', textSchema);
-
-// Show the latest text
-app.get('/', function(req, res) {
-  var text = Text.find(function(err, texts) {
-    if (err) console.log(err);
-    res.send(texts);
-  });
+app.configure('development', function(){
+  app.use(express.errorHandler());
 });
 
-// Create a new Text
-app.post('/texts', function(req, res) {
-  var text = new Text({ 
-    from     : req.body.From,
-    body     : req.body.Body,
-    dateSent : new Date()
-  });
+app.get('/', routes.index);
+app.post('/texts', routes.create);
 
-  text.save(function (err, text) {
-    if (err) console.log(err);
-    console.log(text);
-  });
-
-  res.send('<?xml version="1.0" encoding="UTF-8"?>');
-});
-
-var port = process.env.PORT || 5000;
-app.listen(port, function() {
-    console.log("Listening on " + port);
+http.createServer(app).listen(app.get('port'), function(){
+  console.log("Express server listening on port " + app.get('port'));
 });
