@@ -25,6 +25,6 @@ exports.create = function(req, res) {
   text.save(function (err, text) {
     if (err) console.log(err);
     console.log(text);
-    res.send('<?xml version="1.0" encoding="UTF-8"?>');
+    res.send('<?xml version="1.0" encoding="UTF-8"?>\n<Response>\n</Response>');
   });
 };
