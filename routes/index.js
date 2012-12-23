@@ -1,5 +1,4 @@
-var mongoose = require('mongoose')
-  , Text = require('../models/text');
+ var Text = require('../models/text');
 
 /*
  * GET home page.
@@ -16,10 +15,11 @@ exports.index = function(req, res){
  * POST create text
  */
 exports.create = function(req, res) {
-  var text = new Text({ 
-    from: req.body.From,
-    body: req.body.Body,
-    dateSent: new Date()
+  var text = new Text({
+      from: req.body.From
+    , body: req.body.Body
+    , smsSid: req.body.SmsSid
+    , dateSent: new Date()
   });
 
   text.save(function (err, text) {
