@@ -7,11 +7,11 @@
     "start": "node app"
   },
   "dependencies": {
-    "express": "3.0.4",
-    "mongoose": "3.x",
-    "jade": "*",
-    "stylus": "*",
-    "nib": "*"
+    "express": "3.0.x",
+    "mongoose": "3.5.x",
+    "jade": "0.27.x",
+    "stylus": "0.31.x",
+    "nib": "0.9.x"
   },
   "engines": {
     "node": "0.8.x",
