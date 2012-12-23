@@ -1,7 +1,27 @@
 extends layout
 
 block content
-  h1= title
-  p Is there food in WVH?
+  header
+    h1= title
+    p Is there food in WVH?
 
-  pre= texts
+  ul#texts
+    - each text in texts
+      li= text.body
+
+  ul#info
+    li
+      h3 What is this?
+      p.
+        This is a little service created to notify people when there is
+        free food available in West Village H.
+    li
+      h3 How do I use?
+      p.
+        Just text <a href="tel:+16174463281">(617) 446 3281</a> the
+        location of where the free food is. The app takes care of the
+        rest.
+    li
+      h3 Accuracy rate?
+      p.
+        This page only shows texts sent within the last hour.
